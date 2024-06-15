@@ -72,7 +72,7 @@ class BuildO:
         result = []
         if input_assembly_file.is_dir():
             for file in input_assembly_file.rglob("*.asm"):
-                if file.is_file() and file.suffix == ".asm":
+                if file.is_file():
                     result.append(self._build_inner(file))
         else:
             result.append(self._build_inner(input_assembly_file))
@@ -120,8 +120,8 @@ class NASM_Assembler(RunO):
         def build_args(input_path:Path, output_path:Path, buildo:BuildO)->list[str]:
             return [
                 "-f", "win32",
-                "-o", input_path,
-                output_path
+                "-o", output_path,
+                input_path
             ]
         super().__init__(exe_path, build_args)
     
