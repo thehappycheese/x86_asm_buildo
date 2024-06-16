@@ -2,7 +2,7 @@
 
 %define STD_OUTPUT_HANDLE -11
 %define NULL 0
-%define NUM_TIMES 9
+%define NUM_TIMES 10
 
 %macro EXIT_PROCESS 1
     push %1
@@ -21,14 +21,14 @@
 %endmacro
 
 section .data
-    hello db 'Hello, World!', 0x0A, 0  ; String to print with a newline
-    hello_len equ $ - hello            ; Length of the string
+    hello db 'Hello, World!', 0x0A, 0
+    hello_len equ $ - hello
 
 section .text
     global _start
-    extern _ExitProcess@4
-    extern _GetStdHandle@4
-    extern _WriteFile@20
+    extern _ExitProcess@4 ; https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-exitprocess
+    extern _GetStdHandle@4; https://learn.microsoft.com/en-us/windows/console/getstdhandle
+    extern _WriteFile@20 ;https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-writefile
 
 _start:
 
@@ -38,15 +38,7 @@ _start:
 
     ; Initialize loop counter
     mov ecx, NUM_TIMES
-
 print_loop:
     WRITE_STRING hello, hello_len
     loop print_loop
-
-    mov ecx, 20
-mark:
-    nop
-    mov ecx, 20
-    loop mark
-    ; Exit the process
     EXIT_PROCESS 0

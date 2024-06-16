@@ -1,9 +1,12 @@
 {
     "cSpell.words": [
         "AssemblO",
+        "LibO",
         "BuildO",
         "LinkO",
         "MSVC",
         "NASM"
-    ]
+    ],
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.autoImportCompletions": true
 }

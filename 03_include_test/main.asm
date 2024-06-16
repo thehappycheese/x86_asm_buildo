@@ -1,6 +1,4 @@
-%define STD_OUTPUT_HANDLE -11
-%define NULL 0
-%define NEWLINE 0x0A
+%include "macros.asm"
 
 section .data
     hello db 'Hello, World!', NEWLINE, 0  ; String to print
