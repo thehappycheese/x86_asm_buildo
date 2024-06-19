@@ -19,7 +19,7 @@ section .data
     hello db NEWLINE,'Hello, World!', NEWLINE  ; String to print
     hello_len equ $ - hello      ; Length of the string
 
-    output_path db './cheese_out.txt', 0
+    output_path db './out.txt', 0
     output_path_len equ $ - output_path
 
     float_value dq 3.141         ; Double precision floating point value

@@ -1,4 +1,5 @@
 *.exe
 *.o
 *.obj
+out.txt
 __pycache__

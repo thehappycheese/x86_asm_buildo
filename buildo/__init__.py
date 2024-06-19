@@ -258,7 +258,11 @@ def cleanup(path:Path|str, recurse:bool=True):
     glob_function = path.glob
     if recurse:
         glob_function = path.rglob
-    files_to_delete = list(glob_function("*.obj")) + list(glob_function("*.exe"))
+    files_to_delete =(
+          list(glob_function(  "*.obj"))
+        + list(glob_function(  "*.exe"))
+        + list(glob_function("out.txt"))
+    )
     if len(files_to_delete) == 0:
         print(f"No .obj or .exe files found in {path}")
         return
